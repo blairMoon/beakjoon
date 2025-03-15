@@ -27,6 +27,8 @@ def OXquiz():
                 final_score += O_score
             else:
                 O_score = 0
+
+                
         result.append(final_score)
     return result
 print("\n".join(map(str, OXquiz())))
