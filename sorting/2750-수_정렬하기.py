@@ -7,34 +7,34 @@
 # 출력
 # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
 
-N = int(input())
+# N = int(input())
 
-def sort(N):
-    num_list = [int(input()) for i in range(N)]
-    for i in range(N - 1 ):
-        change_num = 0
-        for j in range(N - 1):
-            if num_list[j+1] < num_list[j]:
-                change_num = num_list[j + 1]
-                num_list[j + 1] = num_list[j]
-                num_list[j] = change_num
-    return '\n'.join(map(str,num_list))
+# def sort(N):
+#     num_list = [int(input()) for i in range(N)]
+#     for i in range(N - 1 ):
+#         change_num = 0
+#         for j in range(N - 1):
+#             if num_list[j+1] < num_list[j]:
+#                 change_num = num_list[j + 1]
+#                 num_list[j + 1] = num_list[j]
+#                 num_list[j] = change_num
+#     return '\n'.join(map(str,num_list))
 
-print(sort(N))
+# print(sort(N))
 
 # 리팩토링 코드 
-# def bubble_sort(arr):
-#     N = len(arr)
-#     for i in range(N - 1):
-#         for j in range(N - 1 - i):
-#             if arr[j + 1] < arr[j]:
-#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]  # swap
-#     return '\n'.join(map(str, arr))
+def bubble_sort(arr):
+    N = len(arr)
+    for i in range(N - 1):
+        for j in range(N - 1 - i):
+            if arr[j + 1] < arr[j]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]  # swap
+    return '\n'.join(map(str, arr))
 
 
-# N = int(input())
-# num_list = [int(input()) for _ in range(N)]
-# print(bubble_sort(num_list))
+N = int(input())
+num_list = [int(input()) for _ in range(N)]
+print(bubble_sort(num_list))
 
 
 # 흐름 설명 : 어떻게 생각했는가? 
