@@ -47,7 +47,7 @@ def cutPaper():
     ww_list.sort()
     max_wh = 0
     max_ww = 0
-    
+    ### 
     for i in range(len(wh_list)- 1):
         cur_wh = wh_list[i + 1] - wh_list[i] 
         if cur_wh > max_wh:
