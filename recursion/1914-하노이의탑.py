@@ -21,19 +21,17 @@
 
 N = int(input())
 
-count = 0  # 이동 횟수 카운트용 전역 변수
+# 첫 줄: 이동 횟수 출력 (공식 사용)
+print(2**N - 1)
 
-def hanoi(N, a, b, c):
-    global count
-    if N == 1:
-        count += 1
-        print(a, c)
-        return
-    hanoi(N - 1, a, c, b)
-    count += 1
-    print(a, c)
-    hanoi(N - 1, b, a, c)
+# N이 20 이하인 경우만 재귀 수행
+if N <= 20:
+    def hanoi(n, start, temp, end):
+        if n == 1:
+            print(start, end)
+            return
+        hanoi(n - 1, start, end, temp)
+        print(start, end)
+        hanoi(n - 1, temp, start, end)
 
-# 초기 막대 번호는 일반적으로 1, 2, 3
-hanoi(N, 1, 2, 3)
-print("총 이동 횟수:", count)
+    hanoi(N, 1, 2, 3)
