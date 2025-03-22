@@ -90,3 +90,49 @@ def run_stack():
     # print(dic)    
     
 run_stack()
+
+# 리팩토링 코드 !
+# class Stack:
+#     def __init__(self):
+#         self.stack = []
+
+#     def push(self, num):
+#         self.stack.append(num)
+
+#     def pop(self):
+#         if self.empty():
+#             return -1
+#         return self.stack.pop()
+
+#     def size(self):
+#         count = 0
+#         for i in self.stack:
+#             if isinstance(i, int):
+#                 count += 1
+#         return count
+
+#     def empty(self):
+#         return 1 if len(self.stack) == 0 else 0
+
+#     def top(self):
+#         if self.empty():
+#             return -1
+#         return self.stack[-1]
+        
+        
+# def run_stack():
+#     N = int(input())
+#     stack = Stack()
+#     for _ in range(N):
+#         cmd = input().split()
+#         op = cmd[0]
+#         if op == 'push':
+#             stack.push(int(cmd[1]))
+#         else:
+#             func_map = {
+#                 'pop': stack.pop,
+#                 'size': stack.size,
+#                 'empty': stack.empty,
+#                 'top': stack.top
+#             }
+#             print(func_map[op]())
