@@ -105,3 +105,18 @@ print(*result) # 리스트에서 바로 빼주는 거!!
 
 
 
+N = int(input())
+tops = list(map(int, input().split()))
+stack = []         # index만 저장
+result = [0] * N
+
+for i in range(N):
+    while stack and tops[stack[-1]] < tops[i]: # stack (최댓값이 있고, 그 최댓값이 현재 탑보다 작으면 pop)
+        stack.pop()
+    
+    if stack: # 최댓값이 있으면 그 result에 해당 번호 넣어줘 
+        result[i] = stack[-1] + 1  # 인덱스니까 +1
+
+    stack.append(i) #최댓값이 있어도  일단 넣어봐야지 그 전 게 작을 수도 있잖아 
+
+print(*result)
