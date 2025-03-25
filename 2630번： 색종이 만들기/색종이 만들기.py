@@ -19,7 +19,7 @@
 # 1. 처음에 모두 1이거나 모두 0이거나 하면 한개만 나오니까 그거 예외처리 
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
-x = y = 0
+
 def fold_paper(x, y, n):
   total = 0
   
