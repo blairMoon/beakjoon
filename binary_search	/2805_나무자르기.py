@@ -25,66 +25,76 @@
 
 
 
-def cut_trees(N,trees_sum):
-  trees = sorted(map(int,input().split()))
-  middle_tree = (trees[0] + trees[-1])//2
+# def cut_trees(N,trees_sum):
+#   trees = sorted(map(int,input().split()))
+#   middle_tree = (trees[0] + trees[-1])//2
   
-  middle_tree_max = 0
+#   middle_tree_max = 0
   
-  while middle_tree < trees[-1]: 
-    tree_remainder_sum = 0
-    for tree in range(N - 1, -1, -1): 
-      if trees[tree] // middle_tree > 0: # 큰 수부터 하는게 맞지
-        tree_remainder_sum += trees[tree] % middle_tree # 다 더해보자 
-      # tree_remainder_sum += trees[tree] - middle_tree => 이게 더 정확한 코드 사실 몫과 나누기가 있는게 아니라 결국 그냥 뺴는 코드임 한번만 자르니까!
+#   while middle_tree < trees[-1]: 
+#     tree_remainder_sum = 0
+#     for tree in range(N - 1, -1, -1): 
+#       if trees[tree] // middle_tree > 0: # 큰 수부터 하는게 맞지
+#         tree_remainder_sum += trees[tree] % middle_tree # 다 더해보자 
+#       # tree_remainder_sum += trees[tree] - middle_tree => 이게 더 정확한 코드 사실 몫과 나누기가 있는게 아니라 결국 그냥 뺴는 코드임 한번만 자르니까!
 
-      else: # 몫이 0이면 break 해서 시간 단축 
-        break 
-    if tree_remainder_sum >= trees_sum:  # 만약에 지금 다 더한게 그 상근이가 원하는 sum보다 크거나 같으면
-      if middle_tree > middle_tree_max: # 그리고 여태까지 넣어둔 middle_tree_max보다 크다면!!
-        middle_tree_max = middle_tree # middle_tree_max 바꿔줘
-      middle_tree += 1 # 그리고 더큰게 있을 지도 모르잖아 + 1 해봐 
-    else: 
-        if not middle_tree_max == 0 and middle_tree_max > tree_remainder_sum: # 만약에 일단 처음 0이 아니고 middle_tree_max가 큰게 존재하면
-          # 앞으로 1을 더해도 작은 수밖에 안나올거임 그니까 return해줘 이게 제일 큰수야 
-          return middle_tree_max 
-        middle_tree -= 1 # 그게 아니면 -1을 해주고 다시해야징 상근이 나무 못가져가면 안되잖어 
-  return middle_tree_max  # 만약 어쩔수 없이 중간에 return안되고 마지막 수까지 돌렸다면 그게 답인가보지 그거 return해 길이가 1인거 베고 싶었을 수도 잇지 
+#       else: # 몫이 0이면 break 해서 시간 단축 
+#         break 
+#     if tree_remainder_sum >= trees_sum:  # 만약에 지금 다 더한게 그 상근이가 원하는 sum보다 크거나 같으면
+#       if middle_tree > middle_tree_max: # 그리고 여태까지 넣어둔 middle_tree_max보다 크다면!!
+#         middle_tree_max = middle_tree # middle_tree_max 바꿔줘
+#       middle_tree += 1 # 그리고 더큰게 있을 지도 모르잖아 + 1 해봐 
+#     else: 
+#         if not middle_tree_max == 0 and middle_tree_max > tree_remainder_sum: # 만약에 일단 처음 0이 아니고 middle_tree_max가 큰게 존재하면
+#           # 앞으로 1을 더해도 작은 수밖에 안나올거임 그니까 return해줘 이게 제일 큰수야 
+#           return middle_tree_max 
+#         middle_tree -= 1 # 그게 아니면 -1을 해주고 다시해야징 상근이 나무 못가져가면 안되잖어 
+#   return middle_tree_max  # 만약 어쩔수 없이 중간에 return안되고 마지막 수까지 돌렸다면 그게 답인가보지 그거 return해 길이가 1인거 베고 싶었을 수도 잇지 
   
 
 
 
-# 위의 거를 이진탐색으로 풀면?
-def cut_trees_binary_search(N, trees_sum):
-  start = 0
-  trees = sorted(map(int,input().split()))
-  end = max(trees)
-  max_trees_sum = 0
-  while start <= end:
-    tree_remainder_sum = 0
-    mid = (start + end) // 2 
-    for tree in trees:
-      if tree > mid:
-        tree_remainder_sum += tree - mid 
-    if tree_remainder_sum >= trees_sum:
-      max_trees_sum = mid
-      start = mid + 1
+# # 위의 거를 이진탐색으로 풀면?
+# def cut_trees_binary_search(N, trees_sum, trees):
+#   start = 0
+  
+#   end = max(trees)
+#   max_trees_sum = 0
+#   while start <= end:
+#     tree_remainder_sum = 0
+#     mid = (start + end) // 2 
+#     for tree in trees:
+#       if tree > mid:
+#         tree_remainder_sum += tree - mid 
+#     #tree_remainder_sum = sum((tree - mid) for tree in trees if tree > mid) 위 코드를 이렇게 간단하게 쓸 수 있음!
+#     if tree_remainder_sum >= trees_sum:
+#       max_trees_sum = mid
+#       start = mid + 1
+#     else:
+#       end = mid - 1
+#   return max_trees_sum
+
+
+
+
+
+
+
+
+
+
+
+
+# N, trees_sum = map(int,input().split())
+# trees = sorted(map(int,input().split())) # input을 함수 안에서 받으면 재사용성이 떨어진대 ! 모두 받아서 하나로 합치는거면 밖에서 받도록!
+# # print(cut_trees(N,trees_sum))
+# print(cut_trees_binary_search(N,trees_sum))
+
+tree_counter = {}
+for height in map(int, input().split()):
+    if height in tree_counter:
+        tree_counter[height] += 1
     else:
-      end = mid - 1
-  return max_trees_sum
-
-
-
-
-
-
-
-
-
-
-
-
-N, trees_sum = map(int,input().split())
-
-# print(cut_trees(N,trees_sum))
-print(cut_trees_binary_search(N,trees_sum))
+        tree_counter[height] = 1
+        
+print(tree_counter)
