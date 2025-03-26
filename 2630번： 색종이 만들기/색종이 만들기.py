@@ -37,10 +37,10 @@ def fold_paper(x, y, n):
     return 0, 1 # 전체가 흰색 색종이일때 
   
   else: 
-    b1, w1 = fold_paper(x, y, n//2)
-    b2, w2 = fold_paper(x + n//2, y, n//2)
-    b3, w3 = fold_paper(x, y + n//2, n//2)
-    b4, w4 = fold_paper(x + n//2, y + n//2, n//2)
+    b1, w1 = fold_paper(x, y, n//2) # 2사분면 
+    b2, w2 = fold_paper(x + n//2, y, n//2) # 1사분면 
+    b3, w3 = fold_paper(x, y + n//2, n//2) # 3사분면 
+    b4, w4 = fold_paper(x + n//2, y + n//2, n//2) # 4사분면
     return b1 + b2 + b3 + b4, w1 + w2 + w3 + w4
 
 
