@@ -19,8 +19,7 @@ def power(a, b, c):
     if b == 1:
         return a % c
     # 거듭제곱의 수를 반으로 잘라가면서 푼다 .
-    temp = power(a, b // 2)
-    
+    temp = power(a, b // 2, c)
     # 다 자른 후에 만약 b가 짝수면 
     if b % 2 == 0:
         return (temp * temp) % c

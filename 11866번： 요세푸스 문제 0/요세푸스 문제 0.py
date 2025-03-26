@@ -23,4 +23,7 @@ def Josephus(N, K):
         index = (index + K - 1) % len(people)
         result.append(people.pop(index))
 
-    return result
+    return "<" + ", ".join(map(str, result)) + ">"
+
+  
+print(Josephus(N, K))
