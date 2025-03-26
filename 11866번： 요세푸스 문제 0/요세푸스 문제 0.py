@@ -20,8 +20,9 @@ def Josephus(N, K):
     index = 0
 
     while people:
-        index = (index + K - 1) % len(people)
-        result.append(people.pop(index))
+        index = (index + K - 1) % len(people) # index 먼저 구해준 뒤,
+        result.append(people.pop(index)) # pop을 해야함 
+        # pop이 된 상태에서 index 구하면 하나빠진 상태이기 때문에 index가 이상해짐
 
     return "<" + ", ".join(map(str, result)) + ">"
 
