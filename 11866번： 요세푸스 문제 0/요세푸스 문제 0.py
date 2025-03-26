@@ -12,12 +12,15 @@
 
 
 
-N, K = map(int(input()).split())
+N, K = map(int, input().split())
 
-def Josephus(N,K):
-  is_vaild = True
-  result = []
-  start = 1
-  while len(result) < N:
-    if start < N:
-      result.append(start + K)   
+def Josephus(N, K):
+    people = list(range(1, N+1)) 
+    result = []
+    index = 0
+
+    while people:
+        index = (index + K - 1) % len(people)
+        result.append(people.pop(index))
+
+    return result
