@@ -44,3 +44,5 @@ def find_num(N_list , M_list):
 
 result = find_num(N_list , M_list)
 print(*result, sep='\n')
+
+

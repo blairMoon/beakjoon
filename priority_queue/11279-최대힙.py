@@ -32,3 +32,4 @@ def max_heap(N):
       print(-heapq.heappop(heap) if heap else 0 )
 
 max_heap(N)
+
